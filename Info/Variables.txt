@@ -1,0 +1,15 @@
+wheatProduce
+energy
+coalEnergy
+naturalEnergy
+airPollution
+pollutionDamage
+resiliency
+damageFactor
+
+wheatProduce = energy * health
+health = energyEfficiency - pollutionDamage * damageFactor
+energy = coalEnergy + naturalEnergy
+airPollution = coalEnergy * pollutionFactor
+pollutionDamage = airPollution(resiliency - 1)
+produce =  (coal + (coal * fuelEfficiency)(resiliency-1)) + naturalEnergy
