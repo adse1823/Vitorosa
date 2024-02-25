@@ -69,9 +69,10 @@ public class RunTown extends Application {
         entry.setMaxWidth(Double.POSITIVE_INFINITY);
         entry.setAlignment (Pos.CENTER);
 
+        WheatField wheatField = new WheatField();
         Button update = new Button ("Updage Name Tag");
         update.setMaxWidth (Double.POSITIVE_INFINITY);
-        update.setOnAction (new Updater (previousProduce,Produce,totalProduce,previousPollution,Pollution,totalPollution, entry,hello));
+        update.setOnAction (new Updater (wheatField,previousProduce,Produce,totalProduce,previousPollution,Pollution,totalPollution, entry,hello));
 
 
         // HBox updateEntry = new HBox();
@@ -86,10 +87,13 @@ public class RunTown extends Application {
         Button clear = new Button ("Clear");
         clear.setMaxWidth (Double.POSITIVE_INFINITY);
         clear.setMaxHeight(Double.POSITIVE_INFINITY);
-        clear.setOnAction(new ClearUpdate(previousProduce,Produce,totalProduce,Pollution,previousPollution,totalPollution, entry, hello));
+        clear.setOnAction(new ClearUpdate(wheatField, previousProduce,Produce,totalProduce,Pollution,previousPollution,totalPollution, entry, hello));
 
+        Label info = new Label(Info.text);     
+        info.setFont (new Font ("Impact", 20));       
+        
         VBox box = new VBox ();
-        box.getChildren().addAll (top, entry,update, clear);
+        box.getChildren().addAll (top, entry,update, clear,info);
         
         Scene scene = new Scene (box);
         stage.setScene (scene);
