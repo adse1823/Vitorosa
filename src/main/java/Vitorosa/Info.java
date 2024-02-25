@@ -1,7 +1,7 @@
 package Vitorosa;
 
 public class Info {
-    public static String text = "You are the mayor of the town of Vitorosa, a small south American town.\r\n" + //
+    public static String text = "You are the mayor of the town of Vitorosa, a midsized town.\r\n" + //
                 "Your town’s major export is flour made from a special kind of wheat called Miracle wheat.\r\n" + //
                 "It is processed into flour and exported out of the town every month.\r\n" + //
                 "Your wheat needs water from a distant lake. For that you need to generate electricity.\r\n" + //

@@ -22,7 +22,7 @@ public class ClearUpdate implements EventHandler<ActionEvent>{
     @Override
     public void handle(ActionEvent event) {
 
-        headName.setText("Start Again");
+        headName.setText("Year start ");
         firstLabel.setText("Previous month: ");
         secondLabel.setText("Monthly produce");
         thirdLabel.setText("Total produce: ");

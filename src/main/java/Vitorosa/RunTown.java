@@ -28,6 +28,7 @@ public class RunTown extends Application {
         label.setTextFill (Color.RED);
         label.setPadding (new Insets (20));
         label.setAlignment (Pos.CENTER);
+        label.setMaxWidth(Double.POSITIVE_INFINITY);
 
         return label;
     }
@@ -38,7 +39,7 @@ public class RunTown extends Application {
         hello.setFont (new Font ("Impact", 60));
         hello.setTextFill (Color.BLUE);
         hello.setAlignment (Pos.CENTER);
-        hello.setMaxWidth (Double.POSITIVE_INFINITY);
+        // hello.setMaxWidth (Double.POSITIVE_INFINITY);
 
         Label previousProduce = makelabel("Previous produce");
         Label Produce= makelabel("Produce");
@@ -49,12 +50,14 @@ public class RunTown extends Application {
 
         HBox produces = new HBox();
         produces.getChildren().addAll(Produce,previousProduce);
+        produces.setMaxWidth(Double.POSITIVE_INFINITY);
         produces.setBorder (new Border (new BorderStroke (
             Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
         )));
 
         HBox pollutions = new HBox();
         pollutions.getChildren().addAll(Pollution,previousPollution);
+        pollutions.setMaxWidth(Double.POSITIVE_INFINITY);
         pollutions.setBorder (new Border (new BorderStroke (
             Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
         )));
@@ -66,28 +69,25 @@ public class RunTown extends Application {
         )));
 
         Label entryLabel = makelabel("Enter Percentage of coal used (0 - 100)");
+        entryLabel.setAlignment(Pos.TOP_CENTER);
+        entryLabel.setMaxHeight(40);
         entryLabel.setFont(new Font("Times New Roman",14));
 
         TextField entry = new TextField ("");
+        entry.setMaxHeight(40);
         entry.setMaxWidth(Double.POSITIVE_INFINITY);
-        entry.setAlignment (Pos.BOTTOM_CENTER);
+        entry.setAlignment (Pos.CENTER);
 
-        HBox entrySet = new HBox();
-        entrySet.getChildren().addAll(entryLabel,entry);
+
 
         WheatField wheatField = new WheatField();
-        Button update = new Button ("Updage Name Tag");
+        Button update = new Button ("Update values");
         update.setMaxWidth (Double.POSITIVE_INFINITY);
+        update.setMaxHeight(40);
         update.setOnAction (new Updater (wheatField,previousProduce,Produce,totalProduce,previousPollution,Pollution,totalPollution, entry,hello));
 
-
-        // HBox updateEntry = new HBox();
-        // updateEntry.getChildren().addAll(entry,update);
-        // updateEntry.setMaxWidth(Double.POSITIVE_INFINITY);
-        // updateEntry.setBorder (new Border (new BorderStroke (
-        //     Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
-        // )));
-        
+        HBox entrySet = new HBox();
+        entrySet.getChildren().addAll(entryLabel,entry,update);        
         
         
         Button clear = new Button ("Clear");
@@ -99,7 +99,7 @@ public class RunTown extends Application {
         info.setFont (new Font ("Impact", 20));       
         
         VBox box = new VBox ();
-        box.getChildren().addAll (top, entrySet,update, clear,info);
+        box.getChildren().addAll (top, entrySet, clear,info);
         
         Scene scene = new Scene (box);
         stage.setScene (scene);
