@@ -13,6 +13,7 @@ public class ClearUpdate implements EventHandler<ActionEvent>{
     private final Label fourthLabel;
     private final Label fifthLabel;
     private final Label sixthLabel;
+    private WheatField wheatField;
 
     
     private final TextField entry;
@@ -20,6 +21,7 @@ public class ClearUpdate implements EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent event) {
+
         headName.setText("Start Again");
         firstLabel.setText("Previous month: ");
         secondLabel.setText("Monthly produce");
@@ -28,9 +30,11 @@ public class ClearUpdate implements EventHandler<ActionEvent>{
         sixthLabel.setText("Previous Pollution: ");
         fifthLabel.setText("Total pollution: ");
         entry.setText("Enter New value: ");    
+        wheatField.clearMonth();
+        wheatField.clearTotalPoll();
     }
     
-    public ClearUpdate(Label firstName,Label secondName,Label ThirdName,Label fourthName,Label fifthName,Label sixthLabel, TextField entry, Label helloText){
+    public ClearUpdate(WheatField wheatField,Label firstName,Label secondName,Label ThirdName,Label fourthName,Label fifthName,Label sixthLabel, TextField entry, Label helloText){
         this.headName = helloText;
         this.firstLabel = firstName;
         this.secondLabel = secondName;
@@ -39,5 +43,6 @@ public class ClearUpdate implements EventHandler<ActionEvent>{
         this.fifthLabel = fifthName;
         this.sixthLabel = sixthLabel;
         this.entry = entry;
+        this.wheatField = wheatField;
     }
 }

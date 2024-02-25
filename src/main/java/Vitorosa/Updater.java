@@ -39,7 +39,7 @@ public class Updater implements EventHandler<ActionEvent> {
         headName.setText(text);
     }
 
-    public Updater(Label prevName, Label firstName,Label secondName,Label prevPoll, Label thirdName, Label fourthName , TextField entry, Label helloText){
+    public Updater(WheatField wheatField,Label prevName, Label firstName,Label secondName,Label prevPoll, Label thirdName, Label fourthName , TextField entry, Label helloText){
         this.headName = helloText;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -48,7 +48,7 @@ public class Updater implements EventHandler<ActionEvent> {
         this.previousLabel = prevName;
         this.previousPollution = prevPoll;
         this.entry = entry;
-        this.wheatField = new WheatField();
+        this.wheatField = wheatField;
     }
 
 
