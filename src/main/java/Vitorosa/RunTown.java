@@ -65,9 +65,15 @@ public class RunTown extends Application {
             Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
         )));
 
-        TextField entry = new TextField ("Enter percentage of coal used (0 - 100)");
+        Label entryLabel = makelabel("Enter Percentage of coal used (0 - 100)");
+        entryLabel.setFont(new Font("Times New Roman",14));
+
+        TextField entry = new TextField ("");
         entry.setMaxWidth(Double.POSITIVE_INFINITY);
-        entry.setAlignment (Pos.CENTER);
+        entry.setAlignment (Pos.BOTTOM_CENTER);
+
+        HBox entrySet = new HBox();
+        entrySet.getChildren().addAll(entryLabel,entry);
 
         WheatField wheatField = new WheatField();
         Button update = new Button ("Updage Name Tag");
@@ -93,7 +99,7 @@ public class RunTown extends Application {
         info.setFont (new Font ("Impact", 20));       
         
         VBox box = new VBox ();
-        box.getChildren().addAll (top, entry,update, clear,info);
+        box.getChildren().addAll (top, entrySet,update, clear,info);
         
         Scene scene = new Scene (box);
         stage.setScene (scene);

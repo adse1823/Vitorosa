@@ -3,16 +3,17 @@ package Vitorosa;
 public class WheatField {
     
     private double wheatProduce;
+    private double scaleFactor = 0.02;
     private double energy;
     private double coalEnergy = 18;
     private double pollutionFactor = 3 ;
     private double naturalEnergy = 16;
     private double airPollution;
     private double pollutionDamage;
-    private double resiliency = 70;
+    private double resiliency = 60;
     private double energyEfficiency = 0.8;
     // private double split;
-    private double damageFactor = 0.012;
+    private double damageFactor = 0.04;
     private double health;
     private double totalProduce;
     private int month;
@@ -25,7 +26,7 @@ public class WheatField {
     }
     public double getWheatProduce(double split) {
         split /= 100;
-        wheatProduce = this.getEnergy(split) * this.getHealth(split);
+        wheatProduce = this.getEnergy(split) * this.getHealth(split) * scaleFactor;
         setDamageFactor(split);
         setResiliency(split);
         totalProduce += wheatProduce;
@@ -63,7 +64,7 @@ public class WheatField {
 
 
     public void setDamageFactor(double split) {
-        this.damageFactor += 0.008 * split;
+        this.damageFactor += 0.02 * split;
     }
 
     public void setResiliency(double split) {
@@ -78,6 +79,17 @@ public class WheatField {
             return "Year Finish";
         }
 
+    }
+    public void clearMonth(){
+        this.month = 0;
+    }
+
+    public void clearTotalPoll(){
+        this.totalPollution = 0;
+    }
+
+    public void clearTotalProd(){
+        this.totalProduce = 0;
     }
 
     }

@@ -25,6 +25,7 @@ public class Updater implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event){
 
         double split = Double.valueOf(entry.getText());
+        
         String produce  = "Monthly produce: " + String.valueOf(wheatField.getWheatProduce(split));
         String totalProduce  = "Total produce: " +  String.valueOf(wheatField.getTotalProduce());
         String pollution = "Monthly pollution: " + String.valueOf(wheatField.getAirPollution(split/100));
