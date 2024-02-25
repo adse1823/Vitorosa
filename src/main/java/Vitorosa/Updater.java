@@ -12,6 +12,12 @@ public class Updater implements EventHandler<ActionEvent> {
     private final Label headName;
     private final Label firstName;
     private final Label secondName;
+    private final Label thirdName;
+    private final Label fourthName;
+    private final Label previousLabel;
+    private final Label previousPollution;
+
+
     private final TextField entry;
     private WheatField wheatField;
 
@@ -21,17 +27,26 @@ public class Updater implements EventHandler<ActionEvent> {
         double split = Double.valueOf(entry.getText());
         String produce  = "Monthly produce: " + String.valueOf(wheatField.getWheatProduce(split));
         String totalProduce  = "Total produce: " +  String.valueOf(wheatField.getTotalProduce());
+        String pollution = "Monthly pollution: " + String.valueOf(wheatField.getAirPollution(split/100));
+        String totalPollution = "Total pollution: " + String.valueOf(wheatField.getTotalPollution());
+        previousLabel.setText("Previous " + firstName.getText());
         firstName.setText(produce);
         secondName.setText(totalProduce);
-        i += 1;
-        String text = "Month:\t" + Integer.toString(i);
+        previousPollution.setText("Previously: " + thirdName.getText());
+        thirdName.setText(pollution);
+        fourthName.setText(totalPollution);
+        String text = wheatField.getMonth();
         headName.setText(text);
     }
 
-    public Updater(Label firstName,Label secondName, TextField entry, Label helloText){
+    public Updater(Label prevName, Label firstName,Label secondName,Label prevPoll, Label thirdName, Label fourthName , TextField entry, Label helloText){
         this.headName = helloText;
         this.firstName = firstName;
         this.secondName = secondName;
+        this.thirdName = thirdName;
+        this.fourthName = fourthName;
+        this.previousLabel = prevName;
+        this.previousPollution = prevPoll;
         this.entry = entry;
         this.wheatField = new WheatField();
     }

@@ -23,13 +23,13 @@ import javafx.stage.Stage;
 public class RunTown extends Application {
 
     public Label makelabel(String s){
-        Label yourName1 = new Label (s);
-        yourName1.setFont (new Font ("Comic Sans MS", 16));
-        yourName1.setTextFill (Color.RED);
-        yourName1.setPadding (new Insets (20));
-        yourName1.setAlignment (Pos.CENTER);
+        Label label = new Label (s);
+        label.setFont (new Font ("Comic Sans MS", 16));
+        label.setTextFill (Color.RED);
+        label.setPadding (new Insets (20));
+        label.setAlignment (Pos.CENTER);
 
-        return yourName1;
+        return label;
     }
   
     @Override
@@ -40,24 +40,38 @@ public class RunTown extends Application {
         hello.setAlignment (Pos.CENTER);
         hello.setMaxWidth (Double.POSITIVE_INFINITY);
 
-        Label yourName1 = makelabel("Sheet 1");
-        Label yourName2 = makelabel("Sheet 2");
-        Label yourName3 = makelabel("Sheet 3");
-        Label yourName4 = makelabel("Sheet 4");
+        Label previousProduce = makelabel("Previous produce");
+        Label Produce= makelabel("Produce");
+        Label totalProduce = makelabel("Total Produce");
+        Label Pollution = makelabel("Pollution");
+        Label previousPollution = makelabel("Previous pollution");
+        Label totalPollution = makelabel("Total Pollution");
+
+        HBox produces = new HBox();
+        produces.getChildren().addAll(Produce,previousProduce);
+        produces.setBorder (new Border (new BorderStroke (
+            Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
+        )));
+
+        HBox pollutions = new HBox();
+        pollutions.getChildren().addAll(Pollution,previousPollution);
+        pollutions.setBorder (new Border (new BorderStroke (
+            Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
+        )));
 
         VBox top = new VBox ();
-        top.getChildren ().addAll (hello, yourName1,yourName2,yourName3,yourName4);
+        top.getChildren ().addAll (hello,produces,totalProduce,pollutions,totalPollution);
         top.setBorder (new Border (new BorderStroke (
             Color.BLUE, BorderStrokeStyle.SOLID, new CornerRadii (20), BorderStroke.THICK
         )));
 
-        TextField entry = new TextField ("Enter percentage of coal used(0 - 100)");
+        TextField entry = new TextField ("Enter percentage of coal used (0 - 100)");
         entry.setMaxWidth(Double.POSITIVE_INFINITY);
         entry.setAlignment (Pos.CENTER);
 
         Button update = new Button ("Updage Name Tag");
         update.setMaxWidth (Double.POSITIVE_INFINITY);
-        update.setOnAction (new Updater (yourName1,yourName2, entry,hello));
+        update.setOnAction (new Updater (previousProduce,Produce,totalProduce,previousPollution,Pollution,totalPollution, entry,hello));
 
 
         // HBox updateEntry = new HBox();
@@ -72,7 +86,7 @@ public class RunTown extends Application {
         Button clear = new Button ("Clear");
         clear.setMaxWidth (Double.POSITIVE_INFINITY);
         clear.setMaxHeight(Double.POSITIVE_INFINITY);
-        clear.setOnAction(new ClearUpdate(yourName1, yourName2, entry, hello));
+        clear.setOnAction(new ClearUpdate(previousProduce,Produce,totalProduce,Pollution,previousPollution,totalPollution, entry, hello));
 
         VBox box = new VBox ();
         box.getChildren().addAll (top, entry,update, clear);
@@ -83,7 +97,6 @@ public class RunTown extends Application {
     }
 
     public static void main(String[] args) {
-        System.out.println(Double.toString(20.1));
         launch (args);
     }
     

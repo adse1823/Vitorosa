@@ -15,15 +15,28 @@ public class WheatField {
     private double damageFactor = 0.012;
     private double health;
     private double totalProduce;
+    private int month;
+    private double totalPollution;
 
+    public WheatField(){
+        this.totalProduce = 0;
+        this.month = 0;
+        this.totalPollution = 0;
+    }
     public double getWheatProduce(double split) {
+        split /= 100;
         wheatProduce = this.getEnergy(split) * this.getHealth(split);
         setDamageFactor(split);
         setResiliency(split);
         totalProduce += wheatProduce;
+        month += 1;
+        totalPollution += airPollution;
         return wheatProduce;
     }   
 
+    public double getTotalPollution() {
+        return totalPollution;
+    }
     public double getTotalProduce() {
         return totalProduce;
     }
@@ -57,8 +70,15 @@ public class WheatField {
         this.resiliency += 0.02 * (1 -  split);
     }
 
-    public WheatField(){
-        this.totalProduce = 0;
+    public String getMonth(){
+        if (month <= 12) {
+            return "Month: " + Integer.toString(month);
+        }
+        else{
+            return "Year Finish";
+        }
 
     }
-}
+
+    }
+
