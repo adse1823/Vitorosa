@@ -13,11 +13,16 @@ public class Updater implements EventHandler<ActionEvent> {
     private final Label firstName;
     private final Label secondName;
     private final TextField entry;
+    private WheatField wheatField;
 
     @Override
     public void handle(ActionEvent event){
-        secondName.setText(firstName.getText());
-        firstName.setText(entry.getText());
+
+        double split = Double.valueOf(entry.getText());
+        String produce  = "Monthly produce: " + String.valueOf(wheatField.getWheatProduce(split));
+        String totalProduce  = "Total produce: " +  String.valueOf(wheatField.getTotalProduce());
+        firstName.setText(produce);
+        secondName.setText(totalProduce);
         i += 1;
         String text = "Month:\t" + Integer.toString(i);
         headName.setText(text);
@@ -28,6 +33,7 @@ public class Updater implements EventHandler<ActionEvent> {
         this.firstName = firstName;
         this.secondName = secondName;
         this.entry = entry;
+        this.wheatField = new WheatField();
     }
 
 
